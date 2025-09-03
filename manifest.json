@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "Kick Streams on Twitch",
+  "version": "1.0",
+  "description": "Показывает статус Kick стримеров прямо на Twitch",
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "notifications"
+  ],
+
+  "host_permissions": [
+    "https://kick.com/*",
+    "https://www.twitch.tv/*"
+  ],
+
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://www.twitch.tv/*"],
+      "js": ["content.js"],
+      "css": ["styles/content.css"],
+      "run_at": "document_end"
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Kick Streams Manager"
+  },
+
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'; style-src 'self' 'unsafe-inline'"
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}

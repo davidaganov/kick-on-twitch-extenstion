@@ -1,0 +1,93 @@
+/* CSS variables for themes */
+:root {
+  /* Kick theme (default) */
+  --sidebar-theme-primary: #53fc18;
+  --sidebar-theme-link: #53fc18;
+  --sidebar-theme-link-hover: #3db812;
+  --sidebar-theme-icon: black;
+  --sidebar-theme-bg-primary: #0e0e10;
+  --sidebar-theme-status-indicator: #53fc18;
+  --sidebar-theme-show-more: #53fc18;
+  --sidebar-theme-show-more-hover: #3db812;
+}
+
+/* Twitch theme for sidebar */
+.theme-twitch-sidebar {
+  --sidebar-theme-primary: #9147ff;
+  --sidebar-theme-link: #BF94FF;
+  --sidebar-theme-link-hover: #A970FF;
+  --sidebar-theme-icon: #f0eff3;
+  --sidebar-theme-status-indicator: #eb0400;
+  --sidebar-theme-show-more: #9147ff;
+  --sidebar-theme-show-more-hover: #a970ff;
+}
+
+#kick-streamers-extension .kick-refresh:hover {
+  opacity: 1 !important;
+}
+
+/* Force style update when theme changes */
+#kick-streamers-extension.theme-updated {
+  animation: none;
+}
+
+@keyframes themeUpdate {
+  0% { opacity: 1; }
+  50% { opacity: 0.99; }
+  100% { opacity: 1; }
+}
+
+/* Animation for loading indicator */
+#kick-streamers-extension .kick-loading::after {
+  content: '';
+  animation: kick-loading-dots 1.5s infinite;
+}
+
+@keyframes kick-loading-dots {
+  0%, 20% { content: '.'; }
+  40% { content: '..'; }
+  60%, 100% { content: '...'; }
+}
+
+/* Animation for new elements */
+#kick-streamers-extension .tw-transition {
+  animation: fadeInUp 0.3s ease-out;
+}
+
+/* Change stream status indicator color only for our Kick streamers */
+#kick-streamers-extension .ScChannelStatusIndicator-sc-bjn067-0.fJwlvq.tw-channel-status-indicator {
+  background-color: var(--sidebar-theme-status-indicator) !important;
+}
+
+#kick-streamers-extension .side-nav-card-metadata {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Stream status styles */
+#kick-streamers-extension .side-nav-card__live-status {
+  min-width: 0;
+}
+
+#kick-streamers-extension .kick-show-more-btn,
+#kick-streamers-extension .kick-hide-btn {
+  color: var(--sidebar-theme-show-more) !important;
+}
+
+#kick-streamers-extension .kick-show-more-btn:hover,
+#kick-streamers-extension .kick-hide-btn:hover {
+  text-decoration: underline;
+  color: var(--sidebar-theme-show-more-hover) !important;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
